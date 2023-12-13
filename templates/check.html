@@ -1,0 +1,126 @@
+
+{% extends 'base.html'%} {% load static %} {% block content %}
+<link href='{% static 'css/check.css' %}' rel='stylesheet'/>
+
+
+{% comment %} <link href='{% static 'css/img.css' %}' rel='stylesheet'/>
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      
+      <img src="{% static "img/take.jpg" %}" class=" w-100" alt="..." id='check' />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{% static "img/save.png" %}" class="d-block w-100" alt="..." id='check' />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static "img/save.png" %}" class="d-block w-100" alt="..." id='check' />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> {% endcomment %}
+<section class="cards-wrapper">
+  <div class="card-grid-space">
+    <div class="num">01</div>
+    <a class="card"  style="--bg-img: url({% static "img/clickit.jpg" %})">
+      <div>
+        <p>Before you start - learn
+          How to make a suitable photo
+          
+        </p>  <br/>
+        <h3>The smallest distance (10 cm) for a clear frame.</h3>
+        
+      </div>
+     
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">02</div>
+    <a class="card"  style="--bg-img: url('{% static "img/centerfocus.png" %}')">
+      <div>
+        <p>Before you start - learn
+          How to make a suitable photo
+          
+        </p>  <br/>
+        <h3>Keep focus and center the focus only</h3>
+       
+      </div>
+    </a>
+    <br/>
+   
+  </div>
+  {% comment %} <div class="card-grid-space">
+    <div class="num">03</div>
+    <a class="card"  style="--bg-img: url('{% static "img/focus.png" %}')">
+      <div>
+        <p>Before you start - learn
+          How to make a suitable photo
+          
+        </p>
+          <br/>
+        <h3>The photo should be a free objects.</h3>
+        
+      </div>
+    </a><br/> {% endcomment %}
+  </div>
+
+
+  
+
+</section>
+<a href="{% url 'agree' %}" class="nav-link">
+  <div class='btn123'><button type='button' class='btn12'>Got it</button></div></a>
+  
+
+{% endblock %}

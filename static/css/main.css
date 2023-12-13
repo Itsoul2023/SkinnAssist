@@ -1,0 +1,624 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+header .active a {
+    background-color: red;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Gilroy';
+    font-size: 20px;
+}
+
+:root {
+    --primary-color: black;
+    --secondary-color: whitesmoke;
+}
+
+#chat-container {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: bounceIn 1s;
+}
+
+#exit-button {
+    display: inline-block;
+    content: "\00d7";
+    cursor: pointer;
+    background-color: #3cb7e7;
+    /* Red color, you can change it */
+    color: #fff;
+    /* White text, you can change it */
+    padding: 8px 16px;
+    /* Adjust padding as needed */
+    border-radius: 4px;
+    /* Rounded corners */
+    margin-right: 20px;
+    /* Adjust the right margin to shift it to the right */
+    display: inline-block;
+}
+
+
+/* Add this rule to style the chat header */
+
+#chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    /* Light gray background, you can change it */
+    border-bottom: 1px solid #ccc;
+    /* Border line, you can change it */
+}
+
+#chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #87CEEB;
+    /* Light Blue border for the theme */
+    background-color: #87CEEB;
+    /* Light Blue color for the theme */
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    /* Text color */
+}
+
+#profile-picture {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    animation: robotThinking 1.5s infinite;
+    /* Added animation property */
+    border: 2px solid white;
+    /* White border */
+}
+
+#profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#chat-username {
+    font-weight: bold;
+    color: white;
+}
+
+#chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #87CEEB;
+    /* Light Blue color for the theme */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: bounceIn 1s;
+    transition: background-color 0.3s;
+}
+
+#chat-icon:hover {
+    background-color: #5F9EA0;
+    /* Darker Light Blue on hover */
+}
+
+#chat-box {
+    height: 250px;
+    overflow-y: scroll;
+    padding: 20px;
+    margin: 0;
+    animation: fadeIn 1s ease-in-out;
+    scrollbar-width: thin;
+    scrollbar-color: #87CEEB transparent;
+    /* Light Blue scrollbar for the theme */
+}
+
+#chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #87CEEB;
+    /* Light Blue color for the theme */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: #5F9EA0;
+    /* Darker Light Blue on hover */
+}
+
+.message {
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    color: #333;
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInMessage 0.5s;
+}
+
+.bot-message {
+    background-color: #e0f7fa;
+    /* Light Blue for bot messages */
+    color: #00796b;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #fff;
+    /* White for user messages */
+    color: #333;
+    align-self: flex-end;
+}
+
+.options-container {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.option-button,
+button {
+    margin: 5px;
+    /* Reduced spacing */
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #87CEEB;
+    /* Light Blue color for the theme */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    transform: scale(1);
+}
+
+.option-button:hover {
+    background-color: #5F9EA0;
+    /* Darker Light Blue on hover */
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes robotThinking {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #chat-container {
+        width: 100%;
+        border-radius: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.btn12 {
+    text-decoration: none;
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1: hsla(194 100% 69% / 1);
+    --btn-bg-2: hsla(217 100% 56% / 1);
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+    cursor: pointer;
+    padding: 0.9em 1.4em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-weight: 500;
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+.btn12:hover {
+    background-position: right top;
+}
+
+.btn12:is(:focus,
+ :focus-visible,
+ :active) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn12 {
+        transition: linear;
+    }
+}
+
+n-donate {
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1: hsla(194 100% 69% / 1);
+    --btn-bg-2: hsla(217 100% 56% / 1);
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+    cursor: pointer;
+    padding: 0.9em 1.4em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-weight: 500;
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+.btn-donate:hover {
+    background-position: right top;
+}
+
+.btn-donate:is(:focus,
+ :focus-visible,
+ :active) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-donate {
+        transition: linear;
+    }
+}
+
+{
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1: hsla(194 100% 69% / 1);
+    --btn-bg-2: hsla(217 100% 56% / 1);
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+    cursor: pointer;
+    padding: 0.9em 1.4em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-weight: 500;
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+}
+
+.btn-donate:hover {
+    background-position: right top;
+}
+
+.btn-donate:is(:focus,
+ :focus-visible,
+ :active) {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-donate {
+        --clr-font-main: hsla(0 0% 20% / 100);
+        --btn-bg-1: hsla(194 100% 69% / 1);
+        --btn-bg-2: hsla(217 100% 56% / 1);
+        --btn-bg-color: hsla(360 100% 100% / 1);
+        --radii: 0.5em;
+        cursor: pointer;
+        padding: 0.9em 1.4em;
+        min-width: 120px;
+        min-height: 44px;
+        font-size: var(--size, 1rem);
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-weight: 500;
+        transition: 0.8s;
+        background-size: 280% auto;
+        background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+        border: none;
+        border-radius: var(--radii);
+        color: var(--btn-bg-color);
+        box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+    }
+    .btn-donate:hover {
+        background-position: right top;
+    }
+    .btn-donate:is(:focus,
+     :focus-visible,
+     :active) {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .btn-donate {
+            transition: linear;
+        }
+    }
+    {
+        transition: linear;
+    }
+}
+
+.upload-container {
+    text-align: center;
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.upload-container:hover {
+    background-color: #f0f0f0;
+}
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    fill: #888;
+}
+
+.upload-text {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #888;
+}
+
+.file-input {
+    display: none;
+}
+
+.preview-container {
+    margin-top: 20px;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+}
+
+
+/* Apply basic styling to the result container */
+
+#result-container {
+    display: none;
+    max-width: 600px;
+    /* Adjust the max-width as per your design */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+/* Style the paragraphs inside the result container */
+
+#result-container p {
+    margin: 10px 0;
+}
+
+
+/* Add responsiveness for smaller screens */
+
+@media only screen and (max-width: 600px) {
+    #result-container {
+        max-width: 100%;
+    }
+}
+
+
+/* Add a fade-in animation to the result container */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#result-container {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+
+/* Add a subtle hover effect to the pie chart */
+
+canvas:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn123 {
+    text-align: center;
+}
+
+#home {
+    background-color: #ffe9e3;
+}
+
+.section {
+    background-color: #ffe9e3;
+}
+
+#info_die {
+    display: none;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#info_die h2 {
+    color: #333;
+}
+
+#info_die p {
+    margin: 10px 0;
+}
+
+#info_die strong {
+    color: #555;
+}
+
+#info_die a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#info_die a:hover {
+    text-decoration: underline;
+}
+
+.container1 {
+    position: relative;
+}
+
+.container1 .btn12 {
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.container1 input {
+    width: 0;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.Message {
+    width: 310px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #40414f;
+    transform: translate(0px, 0px);
+    box-shadow: 5px 5px #34343f;
+}
+
+.MsgInput {
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #40414f;
+    border: none;
+    outline: none;
+    width: 250px;
+    height: 30px;
+    transform: translate(5px, -3px);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.SendSVG {
+    width: 30px;
+    height: 30px;
+    border-width: 50px;
+    transform: translate(20px, 5px);
+    background-size: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.SendSVG:hover {
+    background-color: #2b2b35;
+}
+
+.l {
+    position: absolute;
+    width: 1%;
+    height: 30px;
+    background-color: #2e2f38;
+    transform: translate(-20px, 5px);
+}
+
+#locationInput {
+    display: none;
+}

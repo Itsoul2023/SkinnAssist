@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link href='{% static 'css/img.css' %}' rel='stylesheet'/> 
+<link href='{% static 'css/header.css' %}' rel='stylesheet'/> 
+
+
+<section id="home">
+  <div class='bgma'>
+    <div class="section">
+      <h1>Skin Assist<br><br></h1>
+      <p >Say no to disease!</p>
+      <p >Check your skin on the smartphone <br /></p>
+      <p>and get instant results within 1 minute.</p>
+      <a href="{% url 'check' %}" class="btn12">Check your skin now!</a>
+    </div>
+  </div>
+  <br><br><br>
+</section>
+
+<!--Features here-->
+<section class="features" id="features">
+  <br><br>
+  <h3 class="text-center">Why is Skin Assist worth using?</h3>
+  <div class="container overflow-hidden text-center">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="p-3">
+          <p><b>Smart</b></p>
+          <img src='{% static 'img/smart.png' %}' alt=' Smart Image' id='imga'/>
+          <p>
+            Skin-assist is a smart dermatologist app that can analyze uploaded
+            skin images to provide preliminary assessments, helping users
+            understand their skin conditions.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3">
+          <p><b>Simple</b></p>
+          <img src='{% static 'img/simple.jpg' %}' alt=' Smart Image'
+            id='imga'/>
+          <p>
+            You bring the phone to a mole or other formation on the skin, and in
+            1 minute you will know if there is any reason for concern. It also
+            suggests home-remedies and precautions.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3">
+          <p><b>Free And Open Source</b></p>
+          <img src='{% static 'img/free.png' %}' alt=' Smart Image' id='imga' />
+          <p>
+            Skin Assist is available anytime, anywhere without any cost. Keep
+            your health in check at your fingertips even when you are on the go.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3">
+          <p><b>Chat-Bot Supports</b></p>
+          <img src='{% static 'img/chat.png' %}' alt=' Smart Image' id='imga' />
+          <p>
+            Skin Assist features a smart CHAT-BOT to answer frequently asked
+            questions asked by Users. Also, the user can easily access nearby
+            dermatologist locations by giving just the pincode of the area.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br />
+<br />
+<!--Working here-->
+
+<section class="working" id="working">
+  <h3 class="text-center">How to use Skin Assist?</h3>
+  <div class="container overflow-hidden text-center">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="p-3">
+          <p><b>Take a photo*</b></p>
+          <img src='{% static 'img/takeit.jpg' %}' alt=' Smart Image' id='imga' />
+          <p>
+            Keep zoomed at the closest distance (less than 10 cm), keep in focus
+            and center only the skin mark (without hair, wrinkles, and other
+            objects)
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3">
+          <p><b>Identify and send</b></p>
+          <img src='{% static 'img/save.png' %}' alt=' Smart Image' id='imga' />
+          <p>
+            Send your photo and then the system will analyze it and send you a
+            risk assessment.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3">
+          <p><b>Receive your risk assessment **</b></p>
+          <img src='{% static 'img/result.jpg' %}' alt=' Smart Image' id='imga' />
+          <p>
+            Get the result within 60 seconds and related advice on the next
+            steps to take.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br />
+<br /><br />
+
+{% endblock %}

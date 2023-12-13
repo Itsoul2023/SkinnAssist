@@ -1,0 +1,232 @@
+{% load static%}
+<!--footer here-->
+
+<link href='{% static 'css/footer.css' %}' rel='stylesheet'/>
+ <link href='{% static 'css/img.css' %}' rel='stylesheet'/>
+ <link href='{% static 'css/main.css' %}' rel='stylesheet'/>
+
+<section id="contactus">
+  <footer class="footer-distributed">
+    <div class="footer-left">
+      <h3>
+        <img src='{% static 'img/logo.png' %}' alt='LOGO' id='logo' /> Skin
+        Assist
+      </h3>
+
+      <p class="footer-links">
+        <a href="{% url 'home' %}" class="link-1">Home</a>
+
+        <a href="{% url 'about' %}">About</a>
+
+        <a href="#contactus">Contact</a>
+        <a href="{% url 'policy' %}">Privacy Policy</a>
+        <a href="{% url 'terms' %}">Terms and condition</a>
+      </p>
+
+      <p class="footer-company-name">
+        Copyright @ 2023 <strong> Skin Assist </strong> All rights reserved
+      </p>
+    </div>
+
+    <div class="footer-center">
+      <div>
+        <p>
+          If you have any question about<br />
+          our Skin Assist system - contact with us <br />through email:
+        </p>
+      </div>
+      <br />
+      <div>
+        <a href="mailto:support@skin-assist.com">yourskinassist@gmail.com</a>
+      </div>
+    </div>
+    
+
+    <div class="footer-right">
+      <p class="footer-company-about">
+        <span>About the company</span>
+        Skin Assist is not intended to perform diagnosis, but rather to provide
+        users the ability to image, track, and better understand their moles.
+      </p>
+    </div>
+
+    
+<div id="chat-container">
+    <div id="chat-header">
+      <div id="profile-picture">
+        <img src="{% static 'img/skinassist.jpg' %}" alt="Profile Picture" width="100" height="100">
+      </div>
+      <div id="chat-username">Dr. SkinAssist</div>
+      <div id="exit-button" onclick="exitChat()">X</div>
+    </div>
+    <div id="chat-box"></div>
+    <div class="options-container" id="options-container"></div>
+  </div>
+  <div id="chat-icon">&#128172;</div>
+
+
+<script>
+          const chatContainer = document.getElementById('chat-container');
+          const chatIcon = document.getElementById('chat-icon');
+          const chatBox = document.getElementById('chat-box');
+          const optionsContainer = document.getElementById('options-container');
+
+          const fixedOptions = [
+            "Why is Skin Assist worth using?",
+            "What is Skin Assist?",
+            "Does Skin Assist replace doctors?",
+            "Is my personal information safe while using?",
+            "What can I expect from Skin Assist?"
+          ];
+
+          const fixedAnswers = {
+            "How can I assist you today?":
+              "SkinAssist: How can I assist you today?",
+            "Why is Skin Assist worth using?":
+              "SkinAssist: SkinAssist is smart enough to tell your skin-related problems according to the image uploaded by the user. It is very easy to use and requires no costs. SkinAssist is available anytime, anywhere. You can keep your health at your fingertips even when you are on the go.",
+            "What is Skin Assist?":
+              "SkinAssist: Skin Assist is a skincare app that enables you to check your skin for signs of skin cancer and also suggests necessary precautions to be taken. It also suggests home remedies and enables you to store photos to keep track of changes over time. The efficient and easy user-friendly chat-bot solution is also available for users to answer frequently asked questions.",
+            "Does Skin Assist replace doctors?":
+              "SkinAssist: Skin Assist is not a diagnostic device and does not replace a visit to your doctor. Skin Assist helps you become more aware of your skin so you can visit a doctor in time and prepared. If at any time you feel uncomfortable or you see that your skin spot is changing, irritating, or bleeding, we recommend that you visit a medical specialist without hesitation. It does not give any exact result of the skin disease.",
+            "Is my personal information safe while using?":
+              "SkinAssist: Yes, we do everything we can to protect your personal information from third parties and perform all possible measures to keep your data safe. All personal information and data are treated confidentially by authorized personnel. Read our privacy policy for more information. We assure you that your personal information is safe while using this app.",
+            "What can I expect from Skin Assist?":
+              "SkinAssist: Skin Assist will predict the skin disease based on the image uploaded and suggest the first treatment and home remedies. It does not give any exact treatment for the disease."
+          };
+
+          const MAX_OPTIONS = 3;
+          let currentOptionIndex = 0;
+          let nearbyDermatologistClicked = false; // Flag to track if Nearby Dermatologist is clicked
+
+          function exitChat() {
+          // Hide the chat container and show the chat icon
+          console.log("Exit button clicked!");  // Add this line for debugging
+          chatContainer.style.display = 'none';
+          chatIcon.style.display = 'flex';
+          }
+
+          function toggleChat() {
+            chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+            
+            // Add this code to hide the chat icon when the chat is opened
+            if (chatContainer.style.display === 'block') {
+                chatIcon.style.display = 'none';
+            }
+          }
+
+          function simulateChat() {
+            appendMessage('SkinAssist: How can I assist you today?', 'bot');
+            displayOptions();
+          }
+
+          function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = message;
+            messageElement.classList.add('message');
+
+            if (sender === 'bot') {
+              messageElement.classList.add('bot-message');
+            } else {
+              messageElement.classList.add('user-message');
+              messageElement.innerHTML = `You: ${message}`;
+            }
+
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+          }
+
+          function displayOptions() {
+            optionsContainer.innerHTML = '';
+
+            // Always include "Nearby Dermatologist" as a compulsory option
+            const compulsoryOption = document.createElement('button');
+            compulsoryOption.textContent = "Nearby Dermatologist";
+            compulsoryOption.classList.add('option-button');
+
+            if (!nearbyDermatologistClicked) {
+              compulsoryOption.onclick = () => onOptionClick("Nearby Dermatologist");
+            } else {
+              compulsoryOption.disabled = true;
+            }
+
+            optionsContainer.appendChild(compulsoryOption);
+
+            // Display up to MAX_OPTIONS - 1 additional options
+            const remainingOptions = fixedOptions.slice(currentOptionIndex, currentOptionIndex + MAX_OPTIONS - 1);
+            remainingOptions.forEach((option, index) => {
+              const button = document.createElement('button');
+              button.textContent = option;
+              button.classList.add('option-button');
+              button.onclick = () => onOptionClick(option);
+
+              optionsContainer.appendChild(button);
+            });
+          }
+
+          function handleNearbyDermatologist() {
+            if (nearbyDermatologistClicked) {
+              return;
+            }
+
+            nearbyDermatologistClicked = true;
+
+            appendMessage('SkinAssist: Please enter your zip code:', 'bot');
+            const zipCodeInput = document.createElement('input');
+            zipCodeInput.type = 'text';
+            const submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit';
+
+            submitButton.onclick = function () {
+              const zipCode = zipCodeInput.value;
+              const mapIframe = document.createElement('iframe');
+              mapIframe.width = '300';
+              mapIframe.height = '400';
+              mapIframe.frameborder = '0';
+              mapIframe.scrolling = 'no';
+              mapIframe.marginheight = '0';
+              mapIframe.marginwidth = '0';
+              mapIframe.src = `https://maps.google.com/maps?q=dermatologist+near+${zipCode}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+              appendMessage('SkinAssist: Here is the map:', 'bot');
+              chatBox.appendChild(mapIframe);
+
+              zipCodeInput.remove();
+              submitButton.remove();
+
+              // Scroll to the end of the chat after displaying the map
+              chatBox.scrollTop = chatBox.scrollHeight;
+            };
+
+            optionsContainer.appendChild(zipCodeInput);
+            optionsContainer.appendChild(submitButton);
+          }
+
+          function onOptionClick(selectedOption) {
+            if (fixedAnswers[selectedOption]) {
+              appendMessage(fixedAnswers[selectedOption], 'bot');
+            }
+
+            if (selectedOption === 'Nearby Dermatologist') {
+              handleNearbyDermatologist();
+              return;
+            }
+
+            currentOptionIndex += MAX_OPTIONS - 1;
+            if (currentOptionIndex < fixedOptions.length) {
+              setTimeout(() => {
+                displayOptions();
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                appendMessage('SkinAssist: That concludes our conversation. Thank you!', 'bot');
+                optionsContainer.innerHTML = ''; // Clear options
+                displayOptions(); // Show Nearby Dermatologist option
+              }, 1000);
+            }
+          }
+
+          chatIcon.addEventListener('click', toggleChat);
+          window.onload = simulateChat;
+</script>
+
+  </footer>
+</section>

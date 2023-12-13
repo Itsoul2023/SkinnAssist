@@ -1,0 +1,40 @@
+:root {
+    --primary-color: black;
+    --secondary-color: whitesmoke;
+}
+
+#imga {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#home {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+#check {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.gfg {
+    margin: 3%;
+    position: relative;
+}
+
+
+/*This CSS code is defining the styles for a container that holds text*/
+
+.text-container {
+    position: absolute;
+    color: var(--primary-color);
+    left: 18rem;
+    top: 2rem;
+    background-color: var(--secondary-color);
+    padding: 0 1rem;
+}

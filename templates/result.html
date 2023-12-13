@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Diagnosis: {{ diagnosis }}</h2>
+    <p>Confidence: {{ confidence }}%</p>
+
+    {% if graph_data %}
+        <!-- Include Chart.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <canvas id="predictionChart" width="400" height="200"></canvas>
+
+        <script>
+            var ctx = document.getElementById('predictionChart').getContext('2d');
+            var graphData = {{ graph_data|safe }};
+            var labels = Object.keys(graphData);
+            var values = Object.values(graphData);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Percentage',
+                        data: values,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock %}

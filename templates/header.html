@@ -1,0 +1,108 @@
+ {% load static %}
+<!--Header here-->
+      <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+         <link href='{% static 'css/header.css' %}' rel='stylesheet'/>
+         
+
+      
+        <link
+          href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+          rel="stylesheet"
+        />
+      
+
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> 
+      </head>
+    <body >
+     
+        <!-- Example Code -->
+       
+{% comment %} 
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+          
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <img src='{% static 'img/logo.png' %}' alt='LOGO' id='logo' />
+                 <a class="navbar-brand" href="/">Skin Assist</a> 
+                <li class='{% if request.path == '/' %} active {% endif %}'>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="{% url 'home' %}"
+                  >Home</a
+                >
+    
+                <li class="nav-item">
+                  <a  href="#features">Features</a>
+                </li>
+                <li class='{% if request.path == '/aboutus/' %} active {% endif %}'>
+                <a  href="{% url 'about' %}">About Us</a>
+    
+                <li class="nav-item">
+                  <a  href="#working">How It Works</a>
+                </li>
+              </ul>
+            </div>
+            <div class="d-grid gap-2 d-md-block my-3">
+              <a href="#contactus">
+                <button class="btn btn-primary" type="submit">Contact Us</button>
+              </a>
+            </div>
+            </div>
+          </div>
+        </nav>  {% endcomment %}
+       
+        <!-- End Example Code -->
+        <header class="header">
+          <nav>
+            <div class="logo">
+            <a class="head12" href="{% url 'home' %}"><img src='{% static 'img/logo.png' %}' alt='LOGO' id='logo' /><span >Skinn Assist</span></a>
+            </div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+              <li><a href="{% url 'home' %}" >Home</a></li>
+              <li><a href="{% url 'home' %}#features">Features</a></li>
+              <li><a href="{% url 'home' %}#working">How It Works</a></li>
+              <li><a href="{% url 'about' %}">About Us</a></li>
+              <li> <a href="#contactus"> Contact Us </a></li>
+             {% comment %} <li> <a href="#" id="icon">Dark Mode</a></li> {% endcomment %}
+            </ul>
+            
+          </nav>
+        </header>
+         {% comment %} <script>
+          var icon =document.getElementById("icon");
+          icon.onclick=function(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+              icon.innerHTML="dark-mode";
+            }else {
+              icon.innerHTML="light-mode";
+            }
+          }
+        </script> {% endcomment %}
+  </body> 
+ 
+</html> 
+

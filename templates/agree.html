@@ -1,0 +1,73 @@
+{% extends 'base.html'%}  {% block content %}{% load static%}
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        <link href='{% static 'css/header.css' %}' rel='stylesheet'/>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            background-color:white;
+        }
+        a{
+            color:blue;
+            text-decoration:none;
+        }
+        .checkbox-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #agree-checkbox {
+            margin-right: 5px;
+        }
+        #submit-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terms and Conditions</h1>
+        <p>Please read and accept the terms and conditions before proceeding.</p>
+        <form id="terms-form">
+            <label class="checkbox-label">
+                <input type="checkbox" id="agree-checkbox">
+                I agree to the   <a href="{% url 'terms' %}" >terms and conditions &amp;  <a href="{% url 'policy' %}" >privacy policy</a> </a>
+            </label>
+            <a href="{% url 'upload' %}" >
+            <button type="button" id="submit-button" disabled>Agree</button></a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("agree-checkbox").addEventListener("change", function() {
+            var submitButton = document.getElementById("submit-button");
+            submitButton.disabled = !this.checked;
+            
+        });
+
+        document.getElementById("submit-button").addEventListener("click", function() {
+            popup("You have agreed to the terms and conditions. You can now proceed.");
+         
+            // You can add your custom logic here to handle the agreement.
+        });
+    </script>
+</body>
+</html>
+{% endblock %}
+
