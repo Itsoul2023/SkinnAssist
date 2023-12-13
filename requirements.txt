@@ -32,7 +32,7 @@ Markdown==3.3.4
 markdown-it-py==1.0.0
 MarkupSafe==2.0.1
 matplotlib==3.4.3
-mdurl==1.0.1
+mdurl==0.1.0
 ml-dtypes==0.2.0
 mpmath==1.2.1
 namex==0.0.7
