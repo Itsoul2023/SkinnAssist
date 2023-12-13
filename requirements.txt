@@ -62,7 +62,7 @@ tensorboard==2.6.0
 tensorboard-data-server==0.6.1
 tensorflow==2.6.0
 tensorflow-estimator==2.6.0
-tensorflow-intel==2.6.0  # Add a version if this is required
+tensorflow-intel  # Add a version if this is required
 tensorflow-io-gcs-filesystem==0.31.0
 termcolor==1.1.0
 torch==1.10.0
